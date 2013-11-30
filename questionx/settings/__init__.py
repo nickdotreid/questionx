@@ -17,7 +17,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '9w2%rh5=(_u%lj)u-pzo0s9$6^c82kx@ww1(k(ms%04z9u3p02'
+SECRET_KEY = 'secret_key'
+if 'SECRET_KEY' in os.environ:
+    SECRET_KEY = os.environ['SECRET_KEY']
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -80,3 +83,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+if 'HEROKU' in os.environ:
+    from production import *
+else:
+    from development import *
