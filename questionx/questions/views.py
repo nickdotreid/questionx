@@ -22,7 +22,6 @@ def join(request):
 			try:
 				patient.save()
 				# start patient session
-				# redirect to patient page
 				return HttpResponseRedirect(reverse(view, kwargs={'phone_number':patient.phone_number}))
 			except:
 				pass
