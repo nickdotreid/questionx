@@ -1,5 +1,7 @@
 from django.db import models
 
+from django.db.models.signals import pre_save
+
 from django.contrib.auth.models import User
 
 class Patient(models.Model):
@@ -9,6 +11,17 @@ class Patient(models.Model):
 
 	def __unicode__(self):
 		return self.phone_number
+
+def patient_create_user_if_null(sender, instance, **kwargs):
+	if 'raw' in kwargs and kwargs['raw']:
+		return
+	try:
+		instance.user
+	except:
+		user = User(username=instance.phone_number)
+		user.save()
+		instance.user = user
+pre_save.connect(patient_create_user_if_null, sender=Patient)
 
 
 # Register your models here.
