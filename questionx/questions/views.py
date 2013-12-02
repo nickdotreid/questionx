@@ -22,6 +22,13 @@ def join(request):
 			patient.save()
 			# start patient session
 			# redirect to patient page
+			return HttpResponseRedirect(reverse(view, kwargs={'phone_number':patient.phone_number}))
 	return render_to_response('pages/join.html',{
 		'form':form,
+		},context_instance=RequestContext(request))
+
+def view(request, phone_number):
+	patient = get_object_or_404(Patient, phone_number=phone_number)
+
+	return render_to_response('pages/join.html',{
 		},context_instance=RequestContext(request))
