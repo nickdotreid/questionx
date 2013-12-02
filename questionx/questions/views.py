@@ -19,10 +19,13 @@ def join(request):
 		if form.is_valid():
 			patient = Patient()
 			patient.phone_number = form.cleaned_data['phone_number']
-			patient.save()
-			# start patient session
-			# redirect to patient page
-			return HttpResponseRedirect(reverse(view, kwargs={'phone_number':patient.phone_number}))
+			try:
+				patient.save()
+				# start patient session
+				# redirect to patient page
+				return HttpResponseRedirect(reverse(view, kwargs={'phone_number':patient.phone_number}))
+			except:
+				pass
 	return render_to_response('pages/join.html',{
 		'form':form,
 		},context_instance=RequestContext(request))
