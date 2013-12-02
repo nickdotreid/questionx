@@ -5,20 +5,23 @@ from django.core.urlresolvers import reverse
 from django.template import RequestContext
 
 from django import forms
+from localflavor.us.forms import USPhoneNumberField
 import phonenumbers
 
 from questions.models import Patient
 
 class JoinForm(forms.Form):
-	phone_number = forms.CharField(max_length=25, required=True)
+	phone_number = USPhoneNumberField(required=True)
 
 def join(request):
 	form = JoinForm()
 	if request.POST:
 		form = JoinForm(request.POST)
 		if form.is_valid():
+			phone_representation = phonenumbers.parse(form.cleaned_data['phone_number'], "US")
+
 			patient = Patient()
-			patient.phone_number = form.cleaned_data['phone_number']
+			patient.phone_number = phonenumbers.format_number(phone_representation, phonenumbers.PhoneNumberFormat.E164)
 			try:
 				patient.save()
 				# start patient session
