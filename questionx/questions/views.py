@@ -35,5 +35,5 @@ def join(request):
 def view(request, phone_number):
 	patient = get_object_or_404(Patient, phone_number=phone_number)
 
-	return render_to_response('pages/join.html',{
+	return render_to_response('pages/list.html',{
 		},context_instance=RequestContext(request))
