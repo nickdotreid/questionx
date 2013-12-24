@@ -1,4 +1,4 @@
 {% for question in questions %}
 <p>Question</p>
 {% endfor %}
-<a href="#">Add Question</a>
+<a href="{% url "questions.views.create" patient.phone_number %}">Add Question</a>
