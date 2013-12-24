@@ -62,12 +62,21 @@ def create(request, phone_number):
 def edit(request, phone_number, question_id):
 	question = get_object_or_404(Question, id=question_id)
 	patient = get_object_or_404(Patient, phone_number=phone_number)
-
+	form = QuestionForm(instance=question)
+	if request.POST:
+		form = QuestionForm(request.POST, instance=question)
+		if form.is_valid():
+			question = form.save()
+			return HttpResponseRedirect(reverse(view, kwargs={'phone_number':patient.phone_number}))
 	return render_to_response('questions/form.html',{
+		'form':form,
+		'question': question,
 		}, context_instance=RequestContext(request))
 
 def delete(request, phone_number, question_id):
 	question = get_object_or_404(Question, id=question_id)
 	patient = get_object_or_404(Patient, phone_number=phone_number)
+
+	question.delete()
 
 	return HttpResponseRedirect(reverse(view, kwargs={'phone_number':patient.phone_number}))
