@@ -1,4 +1,10 @@
 {% for question in questions %}
-<p>Question</p>
+<div class="question question-list-item list-item">
+	<p class="question-text">{{question.text}}</p>
+	<ul>
+		<li><a href="{% url "questions.views.edit" patient.phone_number question.id %}">Edit</a></li>
+		<li><a href="{% url "questions.views.delete" patient.phone_number question.id %}">Delete</a></li>
+	</ul>
+</div>
 {% endfor %}
 <a href="{% url "questions.views.create" patient.phone_number %}">Add Question</a>

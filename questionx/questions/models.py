@@ -28,7 +28,7 @@ pre_save.connect(patient_create_user_if_null, sender=Patient)
 class Question(models.Model):
 
 	text = models.CharField(max_length=250)
-	created = models.DateField()
+	created = models.DateField(auto_now_add=True)
 
 	owner = models.ForeignKey(Patient)
 

@@ -13,6 +13,11 @@ from questions.models import Patient, Question
 class JoinForm(forms.Form):
 	phone_number = USPhoneNumberField(required=True)
 
+class QuestionForm(forms.ModelForm):
+	class Meta:
+		model = Question
+		fields = ['text']
+
 def join(request):
 	form = JoinForm()
 	if request.POST:
@@ -34,15 +39,24 @@ def join(request):
 
 def view(request, phone_number):
 	patient = get_object_or_404(Patient, phone_number=phone_number)
-
+	questions = Question.objects.filter(owner=patient).all().reverse()
 	return render_to_response('pages/list.html',{
 		'patient':patient,
+		'questions':questions,
 		},context_instance=RequestContext(request))
 
 def create(request, phone_number):
 	patient = get_object_or_404(Patient, phone_number=phone_number)
-
+	form = QuestionForm()
+	if request.POST:
+		form = QuestionForm(request.POST)
+		if form.is_valid():
+			question = form.save(commit=False)
+			question.owner = patient
+			question.save()
+			return HttpResponseRedirect(reverse(view, kwargs={'phone_number':patient.phone_number}))
 	return render_to_response('questions/form.html',{
+		'form':form,
 		}, context_instance=RequestContext(request))
 
 def edit(request, phone_number, question_id):
