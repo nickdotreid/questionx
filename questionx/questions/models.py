@@ -3,14 +3,14 @@ from django.db import models
 from django.db.models.signals import pre_save
 
 from django.contrib.auth.models import User
+from smsmessages.models import Phone
 
-class Patient(models.Model):
-
+# Register your models here.
+class Patient(Phone):
 	user = models.OneToOneField(User, blank=True)
-	phone_number = models.CharField(blank=True, max_length=25)
 
 	def __unicode__(self):
-		return self.phone_number
+		return "Patient: %s" % (self.phone_number)
 
 def patient_create_user_if_null(sender, instance, **kwargs):
 	if 'raw' in kwargs and kwargs['raw']:
@@ -24,7 +24,6 @@ def patient_create_user_if_null(sender, instance, **kwargs):
 pre_save.connect(patient_create_user_if_null, sender=Patient)
 
 
-# Register your models here.
 class Question(models.Model):
 
 	text = models.CharField(max_length=250)
