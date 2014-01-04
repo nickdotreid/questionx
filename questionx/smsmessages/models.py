@@ -1,8 +1,6 @@
 from django.db import models
 
 class Phone(models.Model):
-	class Meta:
-		abstract = True
 	phone_number = models.CharField(blank=True, max_length=25)
 
 	def send_sms(self, message):
@@ -40,3 +38,9 @@ class Phone(models.Model):
 
 	def __unicode__(self):
 		return "Phone Number: %s" % (self.phone_number)
+
+class Message(models.Model):
+	from_phone = models.ForeignKey(Phone, blank=True, null=True, related_name="from_messages")
+	to_phone = models.ForeignKey(Phone, blank=True, null=True, related_name="to_messages")
+	text = models.CharField(blank=True, max_length=160)
+	sent = models.DateTimeField(auto_now_add=True)
