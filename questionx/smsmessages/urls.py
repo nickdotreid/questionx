@@ -1,8 +1,7 @@
 from django.conf.urls import patterns, include, url
 
-urlpatterns = patterns('questions.views',
-	url(r'^join','join'),
+urlpatterns = patterns('smsmessages.views',
 	url(r'^$','recieve'),
 	url(r'^(?P<phone_number>\+\w+)','send'),
-	url(r'^(?P<phone_number>\+\w+)','view'),
+	url(r'^(?P<phone_number>\+\w+)','list'),
 )
