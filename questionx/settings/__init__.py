@@ -80,6 +80,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+TWILIO_ACCOUNT = False
+TWILIO_TOKEN = False
+SMS_FROM_NUMBER = False
+if 'TWILIO_ACCOUNT' in os.environ and 'TWILIO_TOKEN' in os.environ and 'SMS_FROM_NUMBER' in os.environ:
+    TWILIO_ACCOUNT = os.environ['TWILIO_ACCOUNT']
+    TWILIO_TOKEN = os.environ['TWILIO_TOKEN']
+    SMS_FROM_NUMBER = os.environ['SMS_FROM_NUMBER']
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
