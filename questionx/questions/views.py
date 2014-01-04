@@ -30,6 +30,7 @@ def join(request):
 			try:
 				patient.save()
 				# start patient session
+				patient.send_sms('Welcome to Qx.')
 				return HttpResponseRedirect(reverse(view, kwargs={'phone_number':patient.phone_number}))
 			except:
 				pass
