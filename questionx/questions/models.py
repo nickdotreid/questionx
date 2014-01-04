@@ -10,7 +10,7 @@ class Patient(Phone):
 	user = models.OneToOneField(User, blank=True)
 
 	def __unicode__(self):
-		return "Patient: %s" % (self.phone_number)
+		return "%s" % (self.phone_number)
 
 def patient_create_user_if_null(sender, instance, **kwargs):
 	if 'raw' in kwargs and kwargs['raw']:

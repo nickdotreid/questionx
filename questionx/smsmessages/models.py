@@ -44,10 +44,17 @@ class Phone(models.Model):
 		return True
 
 	def __unicode__(self):
-		return "Phone Number: %s" % (self.phone_number)
+		return "%s" % (self.phone_number)
 
 class Message(models.Model):
 	from_phone = models.ForeignKey(Phone, blank=True, null=True, related_name="from_messages")
 	to_phone = models.ForeignKey(Phone, blank=True, null=True, related_name="to_messages")
 	text = models.CharField(blank=True, max_length=160)
 	sent = models.DateTimeField(auto_now_add=True)
+
+	def __unicode__(self):
+		if self.from_phone:
+			return "From %s: %s" % (self.from_phone, self.text)
+		if self.to_phone:
+			return "To %s: %s" % (self.to_phone, self.text)
+		return "%s" % (self.text)
