@@ -1,7 +1,12 @@
 from django.db import models
+from django.db.models import Q
 
 class Phone(models.Model):
 	phone_number = models.CharField(blank=True, max_length=25)
+
+	def _messages(self):
+		return Message.objects.filter(Q(from_phone=self)|Q(to_phone=self))
+	messages = property(_messages)
 
 	def send_sms(self, message):
 		from twilio.rest import TwilioRestClient
