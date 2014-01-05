@@ -45,8 +45,26 @@ def recieve(request):
 		'form':form,
 		}, context_instance=RequestContext(request))
 
+class SendForm(forms.Form):
+	message = forms.CharField(required=False)
+	redirect_to = forms.CharField(
+		required = False,
+		widget = forms.HiddenInput(),
+		)
+
 def send(request, phone_number):
 	phone = get_object_or_404(Phone, phone_number=phone_number)
+	form = SendForm(initial={'redirect_to':reverse(send,kwargs={'phone_number':phone.phone_number})})
+	if request.POST:
+		form = SendForm(request.POST)
+		if form.is_valid():
+			phone.send_sms(form.cleaned_data['message'])
+			if 'redirect_to' in form.cleaned_data:
+				return HttpResponseRedirect(form.cleaned_data['redirect_to'])
+			return HttpResponseRedirect(reverse(send,kwargs={'phone_number':phone.phone_number}))
+	return render_to_response('questions/form.html',{
+		'form':form,
+		}, context_instance=RequestContext(request))
 
 def list(request, phone_number):
 	phone = get_object_or_404(Phone, phone_number=phone_number)
