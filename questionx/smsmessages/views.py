@@ -10,9 +10,22 @@ import phonenumbers
 
 from smsmessages.models import Phone
 
+from smsmessages.signals import smsmessage
+
 def recieve(request):
-	if request.POST:
-		pass
+	if 'From' in request.REQUEST and 'Body' in request.REQUEST:
+		phone = False
+		for ph in Phone.objects.filter(phone_number=request.REQUEST['From'])
+			phone = ph
+		if not phone:
+			phone = Phone(phone_number=request.REQUEST['From'])
+			phone.save()
+		smsmessage.send(
+			sender=False,
+			phone=Phone,
+			message=request.REQUEST['Body']
+			)
+	return HttpResponse('<?xml version="1.0" encoding="UTF-8"?><Response></Response>')
 
 def send(request, phone_number):
 	phone = get_object_or_404(Phone, phone_number=phone_number)
