@@ -3,6 +3,7 @@ from django.db.models import Q
 
 class Phone(models.Model):
 	phone_number = models.CharField(blank=True, max_length=25)
+	active = models.BooleanField(default=True)
 
 	def _messages(self):
 		return Message.objects.filter(Q(from_phone=self)|Q(to_phone=self))
@@ -11,6 +12,9 @@ class Phone(models.Model):
 	def send_sms(self, message):
 		from twilio.rest import TwilioRestClient
 		from django.conf import settings
+
+		if not self.active:
+			return False
 
 		client = False
 		
