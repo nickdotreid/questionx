@@ -6,4 +6,4 @@ urlpatterns = patterns('smsmessages.views',
 	url(r'^(?P<phone_number>\+\w+)','list'),
 )
 
-import receivers
+import recievers
