@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{phone}}</h1>
+{% if phone.active %}
+<p>is an active phone number</p>
+{% else %}
+<p>is not an active phone number</p>
+{% endif %}
+<h2>Send a message</h2>
+<form action="" method="post">
+	{% csrf_token %}
+	{{form}}
+	<input type="submit" value="save" />
+</form>
+<h2>Previous messages</h2>
+{% for message in phone.messages %}
+<p>{{message}}</p>
+{% endfor %}
+{% endblock %}

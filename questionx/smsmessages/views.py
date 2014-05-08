@@ -62,7 +62,8 @@ def send(request, phone_number):
 			if 'redirect_to' in form.cleaned_data:
 				return HttpResponseRedirect(form.cleaned_data['redirect_to'])
 			return HttpResponseRedirect(reverse(send,kwargs={'phone_number':phone.phone_number}))
-	return render_to_response('questions/form.html',{
+	return render_to_response('smsmessages/detail.html',{
+		'phone':phone,
 		'form':form,
 		}, context_instance=RequestContext(request))
 
