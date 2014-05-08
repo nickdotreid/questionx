@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
 {% for question in questions %}
 <div class="question question-list-item list-item">
 	<p class="question-text">{{question.text}}</p>
@@ -8,3 +11,4 @@
 </div>
 {% endfor %}
 <a href="{% url "questions.views.create" patient.phone_number %}">Add Question</a>
+{% endblock %}
