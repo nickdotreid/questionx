@@ -1,0 +1,3 @@
+[submodule "questionx/static/bootstrap"]
+	path = questionx/static/bootstrap
+	url = https://github.com/twbs/bootstrap.git
