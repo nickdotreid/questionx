@@ -41,7 +41,7 @@ def recieve(request):
 			if 'redirect_to' in request.REQUEST:
 				return HttpResponseRedirect(request.REQUEST['redirect_to'])
 			return HttpResponse('<?xml version="1.0" encoding="UTF-8"?><Response></Response>')
-	return render_to_response('questions/form.html',{
+	return render_to_response('smsmessages/send_page.html',{
 		'form':form,
 		}, context_instance=RequestContext(request))
 
