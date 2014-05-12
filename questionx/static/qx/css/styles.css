@@ -6063,3 +6063,31 @@ button.close {
     display: none !important;
   }
 }
+.container {
+  width: 400px;
+  padding: 0px;
+}
+a.logo {
+  text-indent: -30000px;
+  overflow: hidden;
+}
+.logo-qx {
+  background-image: url('../i/qx-logo-large.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 450px;
+  height: 150px;
+  display: block;
+}
+.footer {
+  background-color: #695c46;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.footer .logo-qx {
+  background-image: url('../i/qx-logo-small.png');
+  width: 155px;
+  height: 60px;
+  float: right;
+  background-color: #FFF;
+}
