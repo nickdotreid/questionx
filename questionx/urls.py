@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^messages/', include('smsmessages.urls')),
     url(r'^', include('questions.urls')),
+    url(r'^', 'front_page.views.signup'),
 )

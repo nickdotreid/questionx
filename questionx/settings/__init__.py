@@ -51,6 +51,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'smsmessages',
     'questions',
+    'front_page',
 )
 
 MIDDLEWARE_CLASSES = (
