@@ -49,7 +49,9 @@ def create(request):
 					)
 				appointment.save()
 				patient.send_sms('You added an appointment!')
-				return HttpResponseRedirect(reverse(create))
+				return HttpResponseRedirect(reverse(detail, kwargs={
+					'appointment_id':appointment.id,
+					}))
 	return render_to_response('appointments/create.html',{
 		'form':form,
 		},context_instance=RequestContext(request))
