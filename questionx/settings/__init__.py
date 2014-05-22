@@ -111,6 +111,6 @@ if 'TWILIO_ACCOUNT' in os.environ and 'TWILIO_TOKEN' in os.environ and 'SMS_FROM
 STATIC_URL = '/static/'
 
 if 'HEROKU' in os.environ:
-    from production import *
+    from heroku import *
 else:
     from development import *
