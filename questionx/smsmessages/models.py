@@ -42,7 +42,7 @@ class Phone(models.Model):
 				message = client.sms.messages.create(to=self.phone_number, from_=settings.SMS_FROM_NUMBER,
 				                                     body=message + message_count)
 			elif settings.DEBUG:
-				print "To " + self.phone_number + ":: " + message + message_count
+				print "To " + str(self.phone_number) + ":: " + message + message_count
 			m = Message(text=message, to_phone=self)
 			m.save()
 		return True
