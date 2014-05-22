@@ -52,3 +52,9 @@
 @import "../../bootstrap/less/responsive-utilities.less";
 
 @import "base.less";
+
+@largeScreenSize: (@largeSize + @spaceSize*2);
+
+@media screen and (min-width: @largeScreenSize){
+	@import "large.less";
+}

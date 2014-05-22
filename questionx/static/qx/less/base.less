@@ -1,6 +1,10 @@
 .container{
-	width:@large_width;
+	width:100%;
 	padding:0px
+}
+
+.container-main{
+	margin-top:40px;
 }
 
 .logo{
@@ -20,15 +24,20 @@ a.logo{
 	display: block;
 }
 
-.footer{
-	background-color: @primary_color;
-	margin-top: @space_size;
-	margin-bottom: @space_size;
+.footer, .header{
+	background-color: @primaryColor;
 	.logo-qx{
 		background-image:url('../i/qx-logo-small.png');
 		width:155px;
 		height:60px;
-		float:right;
+		float:left;
 		background-color: #FFF;
+	}
+}
+.footer{
+	margin-top: @spaceSize;
+	margin-bottom: @spaceSize;
+	.logo-qx{
+		float:right;
 	}
 }

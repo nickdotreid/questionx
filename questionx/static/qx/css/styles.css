@@ -6064,8 +6064,11 @@ button.close {
   }
 }
 .container {
-  width: 400px;
+  width: 100%;
   padding: 0px;
+}
+.container-main {
+  margin-top: 40px;
 }
 a.logo {
   text-indent: -30000px;
@@ -6079,15 +6082,29 @@ a.logo {
   height: 150px;
   display: block;
 }
-.footer {
+.footer,
+.header {
   background-color: #695c46;
+}
+.footer .logo-qx,
+.header .logo-qx {
+  background-image: url('../i/qx-logo-small.png');
+  width: 155px;
+  height: 60px;
+  float: left;
+  background-color: #FFF;
+}
+.footer {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 .footer .logo-qx {
-  background-image: url('../i/qx-logo-small.png');
-  width: 155px;
-  height: 60px;
   float: right;
-  background-color: #FFF;
+}
+@media screen and (min-width: 740px) {
+  .container {
+    width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
