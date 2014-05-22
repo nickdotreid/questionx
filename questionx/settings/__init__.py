@@ -41,6 +41,8 @@ TEMPLATE_DIRS = (
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
+DATE_FORMAT = 'N j, Y'
+
 
 # Application definition
 
