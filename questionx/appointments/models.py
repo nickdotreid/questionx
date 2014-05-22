@@ -7,7 +7,6 @@ class Appointment(models.Model):
 	owner = models.ForeignKey(Patient)
 	confirmed = models.BooleanField(default=False)
 
-	created = models.DateTimeField(auto_now_add=True)
 	date = models.DateTimeField()
 
-	title = models.CharField(null=True, max_length=150)
+	title = models.CharField(null=True, blank=True, max_length=150)
