@@ -8,6 +8,7 @@ https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
 """
 
 import os
+import sys
 sys.path.insert(0, "questionx")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "questionx.settings")
 
