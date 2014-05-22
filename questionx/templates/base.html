@@ -17,7 +17,12 @@
         {% endblock %}
     </head>
     <body>
-        <div class="container">
+        <nav class="header navbar navbar-default navbar-fixed-top" role="navigation">
+          <div class="container">
+            <a href="#" class="logo logo-qx navbar-brand">Qx</a>
+          </div>
+        </nav>
+        <div class="container container-main">
             {% block content %}
             <div class="hero-unit">
                 <h1>Hello, world!</h1>

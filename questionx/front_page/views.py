@@ -5,6 +5,10 @@ from django.core.urlresolvers import reverse
 
 from django.template import RequestContext
 
+from appointments.views import AppointmentForm
+
 # Create your views here.
 def signup(request):
-	return render_to_response('front_page/signup.html',{}, context_instance=RequestContext(request))
+	return render_to_response('front_page/signup.html',{
+		'form': AppointmentForm(),
+		}, context_instance=RequestContext(request))
