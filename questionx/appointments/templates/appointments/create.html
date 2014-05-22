@@ -1,10 +1,6 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-<p>Create an appointment.</p>
-<form action="" method="post">
-{% csrf_token %}
-{{form}}
-<input type="submit" />
-</form>
+{% crispy form %}
 {% endblock content %}
