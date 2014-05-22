@@ -50,6 +50,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'smsmessages',
+    'appointments',
     'questions',
     'front_page',
 )
