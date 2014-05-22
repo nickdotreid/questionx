@@ -60,8 +60,11 @@ def detail(request, appointment_id=None):
 	except:
 		return HttpResponseRedirect(reverse(list))
 	return render_to_response('appointments/detail.html',{
-		appointment: appointment,
+		'appointment': appointment,
 		},context_instance=RequestContext(request))
 
 def list(request):
-	return render_to_response('appointments/list.html',{},context_instance=RequestContext(request))
+	appointments = Appointment.objects.all()
+	return render_to_response('appointments/list.html',{
+		'appointments': appointments,
+		},context_instance=RequestContext(request))

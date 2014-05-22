@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>Showing {{appointments|length}} appointments</p>
+<ul class="list list-appointments">
+{% for appointment in appointments %}
+	<li class="appointment">
+		{{appointment.owner}} <a href="{%url 'appointments.views.detail' appointment_id=appointment.id%}">on {{ appointment.date|date}}</a>
+	</li>
+{% endfor %}
+</ul>
+{% endblock content %}
