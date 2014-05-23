@@ -2,12 +2,11 @@
 
 {% block content %}
 <div class="appointment">
-	<div class="appointment-date date">{{appointment.date|date}}</div>
+	<p class="lead">Appointment for {{appointment.owner}} on {{appointment.date|date}}</p>
 {% if not appointment.confirmed %}
 	<div class="alert alert-warning">
 		<p>Your appointment has not been confirmed.</p>
 	</div>
 {% endif %}
-	<div class="meta">Created on {{appointment.created|date}}</div>
 </div>
 {% endblock content %}
