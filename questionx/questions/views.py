@@ -26,7 +26,8 @@ def join(request):
 			phone_representation = phonenumbers.parse(form.cleaned_data['phone_number'], "US")
 
 			patient = Patient()
-			patient.phone_number = phonenumbers.format_number(phone_representation, phonenumbers.PhoneNumberFormat.E164)
+			patient.phone_number = str(phonenumbers.format_number(phone_representation, phonenumbers.PhoneNumberFormat.E164))
+			print patient.phone_number
 			try:
 				patient.save()
 				# start patient session
