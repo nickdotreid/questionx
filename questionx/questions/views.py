@@ -27,7 +27,6 @@ def join(request):
 
 			patient = Patient()
 			patient.phone_number = str(phonenumbers.format_number(phone_representation, phonenumbers.PhoneNumberFormat.E164))
-			print patient.phone_number
 			try:
 				patient.save()
 				# start patient session

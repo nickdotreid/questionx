@@ -36,8 +36,9 @@ def create(request):
 		form = AppointmentForm(request.POST)
 		if form.is_valid():
 			phone_representation = phonenumbers.parse(form.cleaned_data['phone_number'], "US")
+			phone_formatted = str(phonenumbers.format_number(phone_representation, phonenumbers.PhoneNumberFormat.E164))
 			# get phone owner (or create then)
-			patient = Patient.objects.get_or_create(phone_number=phone_representation)[0]
+			patient = Patient.objects.get_or_create(phone_number=phone_formatted)[0]
 			
 			# make sure appointment date is in the future
 			now = datetime.utcnow().replace(tzinfo=utc)
