@@ -1,6 +1,6 @@
 from django.db import models
 
-from django.db.models.signals import pre_save
+from django.db.models.signals import pre_save, post_save
 
 from django.contrib.auth.models import User
 from smsmessages.models import Phone
@@ -22,6 +22,12 @@ def patient_create_user_if_null(sender, instance, **kwargs):
 		user.save()
 		instance.user = user
 pre_save.connect(patient_create_user_if_null, sender=Patient)
+
+def patient_welcome_message(sender, instance, created, **kwargs):
+	if not created:
+		return
+	instance.send_sms('Welcome to Qx.')
+post_save.connect(patient_welcome_message, sender=Patient)
 
 
 class Question(models.Model):
