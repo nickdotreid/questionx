@@ -39,6 +39,7 @@ def patient_on_new_phone(sender, instance, created, **kwargs):
 	pat = Patient()
 	pat.phone_number = instance.phone_number
 	pat.save()
+	instance.delete() # get rid of new instance, because Patient creates a new one (and this doesn't create a loop?)
 post_save.connect(patient_on_new_phone, sender=Phone)
 
 
