@@ -33,6 +33,14 @@ def patient_delete_user(sender, instance, **kwargs):
 	instance.user.delete()
 pre_delete.connect(patient_delete_user, sender=Patient)
 
+def patient_on_new_phone(sender, instance, created, **kwargs):
+	if not created:
+		return
+	pat = Patient()
+	pat.phone_number = instance.phone_number
+	pat.save()
+post_save.connect(patient_on_new_phone, sender=Phone)
+
 
 class Question(models.Model):
 
