@@ -4,7 +4,7 @@
 }
 
 .container-main{
-	margin-top:40px;
+	margin-top:8*@spaceSize;
 }
 
 .logo{
@@ -32,8 +32,17 @@ a.logo{
 		height:60px;
 		float:left;
 		background-color: #FFF;
+		&:hover,&.hover{
+			background-color: lighten(@secondaryColor, 40%);
+		}
 	}
 }
+
+.navbar.header{
+	margin-top:10px;
+	border-bottom:0px;
+}
+
 .footer{
 	margin-top: @spaceSize;
 	margin-bottom: @spaceSize;

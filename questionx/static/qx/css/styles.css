@@ -6068,7 +6068,7 @@ button.close {
   padding: 0px;
 }
 .container-main {
-  margin-top: 40px;
+  margin-top: 80px;
 }
 a.logo {
   text-indent: -30000px;
@@ -6093,6 +6093,16 @@ a.logo {
   height: 60px;
   float: left;
   background-color: #FFF;
+}
+.footer .logo-qx:hover,
+.header .logo-qx:hover,
+.footer .logo-qx.hover,
+.header .logo-qx.hover {
+  background-color: #fffaf8;
+}
+.navbar.header {
+  margin-top: 10px;
+  border-bottom: 0px;
 }
 .footer {
   margin-top: 10px;
