@@ -1,6 +1,6 @@
 from django.db import models
 
-from django.db.models.signals import pre_save, post_save
+from django.db.models.signals import pre_save, post_save, pre_delete
 
 from django.contrib.auth.models import User
 from smsmessages.models import Phone
@@ -28,6 +28,10 @@ def patient_welcome_message(sender, instance, created, **kwargs):
 		return
 	instance.send_sms('Welcome to Qx.')
 post_save.connect(patient_welcome_message, sender=Patient)
+
+def patient_delete_user(sender, instance, **kwargs):
+	instance.user.delete()
+pre_delete.connect(patient_delete_user, sender=Patient)
 
 
 class Question(models.Model):
