@@ -6066,6 +6066,8 @@ button.close {
 .container {
   width: 100%;
   padding: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .container-main {
   margin-top: 80px;
@@ -6111,9 +6113,9 @@ a.logo {
 .footer .logo-qx {
   float: right;
 }
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 700px) {
   .container {
-    width: 720px;
+    width: 680px;
     margin-left: auto;
     margin-right: auto;
   }
