@@ -2,10 +2,13 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<p class="lead">As a patient, have you ever gone to a clinic visit and felt like you didn’t have a chance to get answers to the questions you really wanted to ask? Maybe you have had questions that you were unsure how to put into words?</p>
+<p class="lead">We are building a service called Qx, that tries to solve that problem.</p>
 <div class="row">
 	<div class="col-md-6">
 		<h1>Welcome to Qx</h1>
-		<p>Qx is a website that is designed to help you make the most of your medical visits, by sending you infrequent text messages that help you figure out if there are questions you want to ask your doctor. Right before your appointment we give both you and your doctor a list of your questions, so you can be on the same page. You can <a href="#about">learn more about Qx here.</a></p>
+		<p>Qx is a service that adds value to your interactions with a medical provider, by helping you articulate the questions you want answers to. Qx does this by sending you infrequent text messages that use your medical history to recommend questions. Right before your appointment we give both you and your doctor a list of your questions, so you can be on the same page.</p>
+		<p>Qx currently works with dentistry. You can <a href="#why">learn more about Qx here.</a></p>
 	</div>
 	<div class="col-md-6">
 		<section id="signup">
@@ -15,8 +18,21 @@
 		</section>
 	</div>
 </div>
-<section id="about">
-	<h2>About Qx</h2>
+<section id="why">
+	<h2>Why Qx</h2>
+	<p>Both patients and providers complain about the amount of time they have to discuss the treatment of a patient. There is great potential to transform the traditional meeting of the patient with the physician to an experience that maximizes the value of the 15 minutes, on average [CDC FastStats], that they share. Common barriers to care include, lack of transparency, need to confirm information, and power dynamics that don’t empower patients.</p>
+	<p>Fostering higher levels of communication between patients and providers is associated with increased patient adherence to treatments, self-management practices, health outcomes, and lower medical costs and malpractice suits for providers [Mauksch, L. B., "Relationship..."].  A model patient-provider meeting involves the elements to create a relationship based on caring, in order for the provider and patient to openly discuss goals, afflictions, and treatment options.</p>
+	<p>We are building Qx to improve patient-provider interactions, to improve the quality of care that is delivered.</p>
+	<p>Our design process started by trying aggregate personal health device and service data into an interface that improved doctor and patient communication in clinical settings. After conducting interviews, observing clinical interactions and examining current clinical workflows, we pivoted our idea from presenting data to presenting questions.</p>
+	<p>We are piloting Qx with dentistry because of how common dentist visits are, and how badly understood dentistry is.</p>
 </section>
-
+<section id="how">
+	<h2>How Qx works</h2>
+<p>Qx is an SMS based service that collects patient information, and uses that to help a patient come up with questions they want to ask their medical provider. The patient is send an average of 4 messages a week, via text-message and email, which have simple questions for a patient to answer that improve a questions a patient might want to ask their provider. We also allow patients to send in free form questions as they think of them.</p>
+<p>The day before a patient’s visit, they are encouraged to prioritize their questions. Right before their appointment time, the patient is sent a text message with their top 3 questions. Additionally, providers can print a patient’s questions, so that both patient and provider know what questions need to be answered before the end of the clinic.</p>
+</section>
+<section id="who">
+	<h2>Who is Qx?</h2>
+<p>Qx was created during the Innovation in Action competition at the university of michigan, by a group of cross disciplinary students.</p>
+</section>
 {% endblock content %}
