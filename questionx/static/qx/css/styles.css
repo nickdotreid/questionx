@@ -6069,6 +6069,9 @@ button.close {
   margin-left: 10px;
   margin-right: 10px;
 }
+.is-sticky .header {
+  width: 100%;
+}
 .container-main {
   margin-top: 80px;
 }

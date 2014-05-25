@@ -19,7 +19,7 @@
 	</div>
 </div>
 </div> <!-- /container -->
-<nav class="header navbar navbar-default" role="navigation">
+<nav class="header navbar navbar-default sticky" role="navigation">
   <div class="container">
     <a href="#" class="logo logo-qx navbar-brand">Qx</a>
     <ul class="nav navbar-nav">
@@ -48,3 +48,11 @@
 <p>Qx was created during the Innovation in Action competition at the university of michigan, by a group of cross disciplinary students.</p>
 </section>
 {% endblock content %}
+
+{% block script %}
+{{block.super}}
+<script type="text/javascript" src="{{STATIC_URL}}vendor/js/jquery.sticky.js"></script>
+<script type="text/javascript">
+  $('.sticky').sticky();
+</script>
+{% endblock script %}
