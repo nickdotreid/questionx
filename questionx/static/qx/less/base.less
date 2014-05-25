@@ -43,6 +43,14 @@ a.logo{
 .navbar.header{
 	margin-top:10px;
 	border-bottom:0px;
+	border-top:0px;
+	.nav a{
+		color:#FFF;
+		font-weight: bold;
+		&:hover,&.hover{
+			color: lighten(@secondaryColor, 40%);
+		}
+	}
 }
 
 .footer{
